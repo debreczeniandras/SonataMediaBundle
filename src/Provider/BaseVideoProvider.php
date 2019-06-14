@@ -90,7 +90,8 @@ abstract class BaseVideoProvider extends BaseProvider
         } else {
             $referenceFile = $this->getFilesystem()->get($key, true);
             $metadata = $this->metadata ? $this->metadata->get($media, $referenceFile->getName()) : [];
-            $referenceFile->setContent($this->browser->get($this->getReferenceImage($media))->getContent(), $metadata);
+            $refImageResponse      = $this->browser->get($this->getReferenceImage($media));
+            $referenceFile->setContent($refImageResponse->getBody()->getContents(), $metadata);
         }
 
         return $referenceFile;

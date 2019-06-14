@@ -243,12 +243,12 @@ class SonataMediaExtension extends Extension implements PrependExtensionInterfac
             'sonata.media.buzz.connector.curl',
             'sonata.media.buzz.connector.file_get_contents',
         ] as $connector) {
-            $container->getDefinition($connector)
-                ->addMethodCall('setIgnoreErrors', [$config['buzz']['client']['ignore_errors']])
-                ->addMethodCall('setMaxRedirects', [$config['buzz']['client']['max_redirects']])
-                ->addMethodCall('setTimeout', [$config['buzz']['client']['timeout']])
-                ->addMethodCall('setVerifyPeer', [$config['buzz']['client']['verify_peer']])
-                ->addMethodCall('setProxy', [$config['buzz']['client']['proxy']]);
+            $container->getDefinition($connector)->setArgument(0, [
+                'proxy'         => $config['buzz']['client']['proxy'],
+                'timeout'       => $config['buzz']['client']['timeout'],
+                'verify'        => $config['buzz']['client']['verify_peer'],
+                'max_redirects' => $config['buzz']['client']['max_redirects'],
+            ]);
         }
     }
 
