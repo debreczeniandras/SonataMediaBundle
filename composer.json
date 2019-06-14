@@ -27,11 +27,12 @@
     ],
     "require": {
         "php": "^7.1",
+        "ext-json": "*",
         "guzzlehttp/psr7": "^1.0",
         "imagine/imagine": "^0.6 || ^0.7",
         "jms/serializer-bundle": "^1.0 || ^2.0 || ^3.0",
         "knplabs/gaufrette": "^0.8",
-        "kriswallsmith/buzz": "^0.15 || ^0.16",
+        "kriswallsmith/buzz": "^0.17",
         "psr/log": "^1.0",
         "sonata-project/core-bundle": "^3.14",
         "sonata-project/doctrine-extensions": "^1.1.3",

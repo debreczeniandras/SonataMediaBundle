@@ -212,7 +212,7 @@ abstract class BaseVideoProvider extends BaseProvider
             throw new \RuntimeException('Unable to retrieve the video information for :'.$url, $e->getCode(), $e);
         }
 
-        $metadata = json_decode($response->getContent(), true);
+        $metadata = json_decode($response->getBody()->getContents(), true);
 
         if (!$metadata) {
             throw new \RuntimeException('Unable to decode the video information for :'.$url);
